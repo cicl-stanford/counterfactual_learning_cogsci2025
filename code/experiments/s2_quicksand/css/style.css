@@ -1,0 +1,97 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  font-family: 'Sans Serif', Arial, sans-serif;
+  height: 100vh;
+  background-color: #faecd1;
+  overflow: hidden;
+  /* Prevent scrolling */
+}
+
+img {
+  pointer-events: none;
+}
+
+#quicksandContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  /* Prevent content overflow */
+}
+
+#instructionText {
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+#remainingSteps {
+  font-size: 24px;
+  line-height: 1.2;
+  margin-top: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#submitBtn {
+  display: block;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px auto;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#submitBtn:hover {
+  background-color: #45a049;
+}
+
+#submitBtn:disabled {
+  background-color: #A9A9A9;
+  cursor: default;
+  opacity: 0.5;
+}
+
+#occluder {
+  height: 95vh;
+  width: 99vw;
+  top: 45px;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  font-size: 24px;
+  background: #faecd1;
+  position: absolute;
+  z-index: 12;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+#prompt {
+  font-size: 20px;
+  line-height: 1.5;
+  justify-content: center;
+}
+
+#tileEnumerator span {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+}

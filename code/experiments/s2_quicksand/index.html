@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quicksand!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <link rel="stylesheet" href="css/jspsych.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/fullscreen.css" />
+    <link rel="stylesheet" href="css/survey.css" />
+
+    <script src="js/utils/jquery.min.js"></script>
+    <script src="js/utils/lodash.js"></script>
+
+    <script src="js/game_settings.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/quicksand/agent.js"></script>
+    <script src="js/quicksand/tile.js"></script>
+    <script src="js/quicksand/gridworld.js"></script>
+    <script src="js/quicksand/environment.js"></script>
+
+    <script src="js/jspsych_folder/jspsych.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-preload.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-instructions.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-fullscreen.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-browser-check.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-survey.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-survey-multi-choice.js"></script>
+    <script src="js/jspsych_folder/default_plugins/plugin-html-button-response.js"></script>
+    <script src="js/jspsych_folder/quicksand_plugins/plugin-quicksand-setup.js"></script>
+    <script src="js/jspsych_folder/quicksand_plugins/plugin-quicksand-planner.js"></script>
+    <script src="js/jspsych_folder/quicksand_plugins/plugin-quicksand-simulate.js"></script>
+    <script src="js/jspsych_folder/quicksand_plugins/plugin-quicksand-destroy.js"></script>
+    <script src="js/jspsych_folder/quicksand_plugins/plugin-quicksand-eval.js"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+    <script type="module" src="assets/instructions/instructions.mjs"></script>
+    <script type="module" src="assets/instructions/practice_specs.mjs"></script>
+    <script type="module" src="assets/instructions/consent.mjs"></script>
+    <script type="module" src="js/jspsych_folder/jspsychSingleton.mjs"></script>
+    <script type="module" src="js/jspsych_folder/jspsych_utils.mjs"></script>
+    <script type="module" src="js/setup.js"></script>
+  </head>
+  <body>
+    <div id="jspsych-experiment"></div>
+    <script type="module">
+      import { setupGame } from './js/setup.js';
+
+      (async () => {
+        if (!gs.study_metadata.dev_mode) {
+          document.onfullscreenchange = () => forceFullscreen();
+          document.addEventListener("contextmenu", (event) =>
+            event.preventDefault()
+          );
+          window.onbeforeunload = () => {
+            return "Please do not refresh the page or go back, changes you made may not be saved!";
+          };
+        }
+
+        await setupGame();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2627 @@
+{
+    "worlds": [
+        {
+            "metadata": {
+                "width": 8,
+                "height": 3,
+                "update_per_timestep": false,
+                "geometric": false,
+                "world_id": "c17b3477-2fa6-4536-92a3-27a45c2b74d2"
+            },
+            "states": {
+                "(0,0)": 0.0,
+                "(0,1)": 0.8,
+                "(0,2)": 0.8,
+                "(1,0)": 0.0,
+                "(1,1)": 0.0,
+                "(1,2)": 0.8,
+                "(2,0)": 0.8,
+                "(2,1)": 0.0,
+                "(2,2)": 0.0,
+                "(3,0)": 0.8,
+                "(3,1)": 0.8,
+                "(3,2)": 0.0,
+                "(4,0)": 0.0,
+                "(4,1)": 0.0,
+                "(4,2)": 0.0,
+                "(5,0)": 0.8,
+                "(5,1)": 0.0,
+                "(5,2)": 0.8,
+                "(6,0)": 0.0,
+                "(6,1)": 0.0,
+                "(6,2)": 0.0,
+                "(7,0)": 0.0,
+                "(7,1)": 0.8,
+                "(7,2)": 0.8
+            },
+            "learning_phase": {
+                "planner_trials": [
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 4,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 1,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 4,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 1,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 6,
+                                "y": 2
+                            }
+                        ]
+                    }
+                ],
+                "planner_instances": [
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": false,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": true,
+                        "(0,2)": true,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": true,
+                        "(2,0)": true,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": true,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": true,
+                        "(7,2)": true
+                    }
+                ],
+                "simulate_trials": [
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    }
+                ]
+            },
+            "evaluation_phase": {
+                "evaluation_trial": true,
+                "navigation_trials": [],
+                "probability_trials": [],
+                "instance_trials": []
+            }
+        },
+        {
+            "metadata": {
+                "width": 8,
+                "height": 3,
+                "update_per_timestep": false,
+                "geometric": false,
+                "world_id": "1d9c34ef-558a-482f-b550-66803ae58fcf"
+            },
+            "states": {
+                "(0,0)": 0.0,
+                "(0,1)": 0.0,
+                "(0,2)": 0.0,
+                "(1,0)": 0.8,
+                "(1,1)": 0.8,
+                "(1,2)": 0.0,
+                "(2,0)": 0.0,
+                "(2,1)": 0.8,
+                "(2,2)": 0.0,
+                "(3,0)": 0.8,
+                "(3,1)": 0.8,
+                "(3,2)": 0.0,
+                "(4,0)": 0.0,
+                "(4,1)": 0.8,
+                "(4,2)": 0.0,
+                "(5,0)": 0.0,
+                "(5,1)": 0.0,
+                "(5,2)": 0.8,
+                "(6,0)": 0.8,
+                "(6,1)": 0.8,
+                "(6,2)": 0.0,
+                "(7,0)": 0.0,
+                "(7,1)": 0.0,
+                "(7,2)": 0.0
+            },
+            "learning_phase": {
+                "planner_trials": [
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 1,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 0,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 4,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 0,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 6,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 7,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 1
+                            }
+                        ]
+                    }
+                ],
+                "planner_instances": [
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": false,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": true,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": true,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": true,
+                        "(3,1)": true,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": true,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    }
+                ],
+                "simulate_trials": [
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    }
+                ]
+            },
+            "evaluation_phase": {
+                "evaluation_trial": true,
+                "navigation_trials": [],
+                "probability_trials": [],
+                "instance_trials": []
+            }
+        },
+        {
+            "metadata": {
+                "width": 8,
+                "height": 3,
+                "update_per_timestep": false,
+                "geometric": false,
+                "world_id": "9258eebf-04e3-48b5-8c9d-86fea301ceb5"
+            },
+            "states": {
+                "(0,0)": 0.0,
+                "(0,1)": 0.0,
+                "(0,2)": 0.0,
+                "(1,0)": 0.0,
+                "(1,1)": 0.8,
+                "(1,2)": 0.8,
+                "(2,0)": 0.0,
+                "(2,1)": 0.8,
+                "(2,2)": 0.0,
+                "(3,0)": 0.0,
+                "(3,1)": 0.0,
+                "(3,2)": 0.0,
+                "(4,0)": 0.0,
+                "(4,1)": 0.0,
+                "(4,2)": 0.0,
+                "(5,0)": 0.0,
+                "(5,1)": 0.0,
+                "(5,2)": 0.8,
+                "(6,0)": 0.8,
+                "(6,1)": 0.0,
+                "(6,2)": 0.8,
+                "(7,0)": 0.8,
+                "(7,1)": 0.0,
+                "(7,2)": 0.8
+            },
+            "learning_phase": {
+                "planner_trials": [
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 4,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 1,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 1,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 0,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 5,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 6,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 2,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 1,
+                                "y": 1
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 0
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 7,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 4,
+                                "y": 2
+                            }
+                        ]
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": [
+                            {
+                                "x": 3,
+                                "y": 2
+                            }
+                        ]
+                    }
+                ],
+                "planner_instances": [
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": false,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": false
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": false,
+                        "(1,2)": false,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": false,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": true,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": false,
+                        "(7,0)": true,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    },
+                    {
+                        "(0,0)": false,
+                        "(0,1)": false,
+                        "(0,2)": false,
+                        "(1,0)": false,
+                        "(1,1)": true,
+                        "(1,2)": true,
+                        "(2,0)": false,
+                        "(2,1)": true,
+                        "(2,2)": false,
+                        "(3,0)": false,
+                        "(3,1)": false,
+                        "(3,2)": false,
+                        "(4,0)": false,
+                        "(4,1)": false,
+                        "(4,2)": false,
+                        "(5,0)": false,
+                        "(5,1)": false,
+                        "(5,2)": false,
+                        "(6,0)": true,
+                        "(6,1)": false,
+                        "(6,2)": true,
+                        "(7,0)": false,
+                        "(7,1)": false,
+                        "(7,2)": true
+                    }
+                ],
+                "simulate_trials": [
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 1
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 0
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    },
+                    {
+                        "start_position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "goal_position": {
+                            "x": 7,
+                            "y": 2
+                        },
+                        "dist": null,
+                        "wall_positions": []
+                    }
+                ]
+            },
+            "evaluation_phase": {
+                "evaluation_trial": true,
+                "navigation_trials": [],
+                "probability_trials": [],
+                "instance_trials": []
+            }
+        }
+    ],
+    "id": "88857e06-c6a0-4778-9f91-40ae9cd31dcf"
+}
