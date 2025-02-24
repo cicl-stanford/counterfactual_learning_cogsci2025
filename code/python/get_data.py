@@ -132,7 +132,7 @@ def save_processed_data(session_df, block_df, quicksand_df, experiment_config):
     print(f"Data saved to {save_dir}")
 
 def process_experiment_data(study_key):
-    print(f"🔍 Processing data for {study_key}...")
+    print(f"Processing data for {study_key}...")
 
     settings = config.experiments[study_key]
     osf_handler = OSFDataHandler(settings['osf_id'])
@@ -143,8 +143,6 @@ def process_experiment_data(study_key):
     session_df = create_session_dataframe(osf_data, quicksand_df)
 
     save_processed_data(session_df, block_df, quicksand_df, settings)
-
-    print(f"🎉 Finished processing {study_key}!\n")
 
 if __name__ == "__main__":
     for study_key in config.experiments.keys():

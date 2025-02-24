@@ -8,13 +8,17 @@ class OSFDataHandler:
     def __init__(self, node_id):
         self.dataframes = []
         self.node_id = node_id
-        self.ACCESS_TOKEN = os.environ.get('OSF_ID')
+        self.ACCESS_TOKEN = os.environ.get('OSF_ID', None) # Default to None if not set
 
     def add_dataframe(self, dataframe, metadata):
         self.dataframes.append({'dataframe': dataframe, 'metadata': metadata})
 
     def find(self, criteria=None):
-        results = [item['dataframe'] for item in self.dataframes if all(item['metadata'].get(k) == v for k, v in criteria.items())]
+        results = [
+            item['dataframe'] 
+            for item in self.dataframes 
+            if all(item['metadata'].get(k) == v for k, v in criteria.items())
+        ]
         print(f'Found {len(results)} files matching specified criteria.')
         return results
 
@@ -27,9 +31,10 @@ class OSFDataHandler:
         raise ValueError(f"Filename {filename} does not match the expected pattern.")
 
     def download_csv_file(self, file_url):
-        headers = {
-            'Authorization': f'Bearer {self.ACCESS_TOKEN}'
-        }
+        headers = {}
+        if self.ACCESS_TOKEN:
+            headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
+
         response = requests.get(file_url, headers=headers, allow_redirects=False)
         response.raise_for_status()
         
@@ -42,9 +47,10 @@ class OSFDataHandler:
 
     def fetch_node_files(self, provider='osfstorage'):
         url = f'https://api.osf.io/v2/nodes/{self.node_id}/files/{provider}/'
-        headers = {
-            'Authorization': f'Bearer {self.ACCESS_TOKEN}'
-        }
+        headers = {}
+        if self.ACCESS_TOKEN:
+            headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
+
         files = []
         while url:
             response = requests.get(url, headers=headers)
@@ -56,9 +62,10 @@ class OSFDataHandler:
 
     def get_project_name(self):
         url = f'https://api.osf.io/v2/nodes/{self.node_id}/'
-        headers = {
-            'Authorization': f'Bearer {self.ACCESS_TOKEN}'
-        }
+        headers = {}
+        if self.ACCESS_TOKEN:
+            headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
+
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         node_data = response.json()
@@ -86,5 +93,6 @@ class OSFDataHandler:
             df = pd.read_csv(io.StringIO(csv_content))
             metadata = self.extract_metadata(filename)
             self.add_dataframe(df, metadata)
+        
         print(f"Loaded {len(self.dataframes)} CSV files from project '{project_name}' (OSF node {self.node_id}).")
         return pd.concat([item['dataframe'] for item in self.dataframes]).reset_index(drop=True)
