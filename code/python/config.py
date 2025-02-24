@@ -6,7 +6,9 @@ experiments = {
             "experiment": "s1_quicksand",
             "iteration_name": "pilot5"
         },
-        "exam_trial": False
+        "exam_trial": False,
+        "base_pay": "6"
+        
     },
     "s2": {
         "osf_id": "uy7cw",
@@ -15,7 +17,8 @@ experiments = {
             "experiment": "s2_quicksand",
             "iteration_name": "fullstudy"
         },
-        "exam_trial": True
+        "exam_trial": True,
+        "base_pay": "3"
     }
 }
 

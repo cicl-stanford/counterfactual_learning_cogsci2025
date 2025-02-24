@@ -1,0 +1,16 @@
+Version: 1.0
+ProjectId: 1d538b2b-4c41-4cb4-82e6-38c40bbac736
+
+RestoreWorkspace: No
+SaveWorkspace: No
+AlwaysSaveHistory: No
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+ProjectName: counterfactual_learning
