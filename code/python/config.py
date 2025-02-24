@@ -5,7 +5,8 @@ experiments = {
             "project": "counterfactual_learning",
             "experiment": "s1_quicksand",
             "iteration_name": "pilot5"
-        }
+        },
+        "exam_trial": False
     },
     "s2": {
         "osf_id": "uy7cw",
@@ -13,7 +14,8 @@ experiments = {
             "project": "counterfactual_learning",
             "experiment": "s2_quicksand",
             "iteration_name": "fullstudy"
-        }
+        },
+        "exam_trial": True
     }
 }
 
@@ -33,6 +35,7 @@ session_rename_map = {
     'startSimPracticeTS': 'start_sim_practice_ts',
     'startExperimentTS': 'start_experiment_ts',
     'endExperimentTS': 'end_experiment_ts',
+    'time_elapsed': 'experiment_duration_ms',
     'participantYears': 'age',
     'participantGender': 'gender',
     'participantRace': 'race',
@@ -50,36 +53,14 @@ session_rename_map = {
 }
 
 session_order = [
-    "game_id",
-    "prolific_id",
-    "prolific_study_id",
-    "prolific_session_id",
-    "project",
-    "experiment",
-    "condition",
-    "iteration",
-    "dev_mode",
-    "browser",
-    "browser_width",
-    "browser_height",
-    "is_mobile_device",
-    "start_plan_instruction_ts",
-    "start_plan_practice_ts",
-    "start_sim_instruction_ts",
-    "start_sim_practice_ts",
-    "start_experiment_ts",
-    "end_experiment_ts",
-    "experiment_duration_ms",
+    "game_id", "prolific_id", "prolific_study_id", "prolific_session_id",
+    "project", "experiment", "condition", "iteration", "dev_mode",
+    "browser", "browser_width", "browser_height", "is_mobile_device",
+    "start_plan_instruction_ts", "start_plan_practice_ts", "start_sim_instruction_ts","start_sim_practice_ts", "start_experiment_ts", "end_experiment_ts", "experiment_duration_ms",
     "comprehension_attempts",
-    "age",
-    "gender",
-    "race",
-    "ethnicity",
-    "judged_difficulty",
-    "judged_effort",
-    "input_device",
-    "feedback",
-    "technical_difficulties"
+    "age", "gender", "race", "ethnicity", 
+    "judged_difficulty", "judged_effort", "input_device",
+    "feedback", "technical_difficulties"
 ]
 
 quicksand_rename_map = {
@@ -107,27 +88,12 @@ quicksand_rename_map = {
 }
 
 quicksand_order = [
-    'trial_id',
-    'instance_id',
-    'world_id',
-    'game_id',
-    'condition',
-    'trial_type',
-    'trial_phase',
-    'trial_index',
-    'internal_node_id',
-    'start_position',
-    'goal_position',
-    'wall_positions',
-    'distance_from_goal',
+    'trial_id', 'instance_id', 'world_id', 'game_id',
+    'condition', 'trial_type', 'trial_phase', 'trial_index', 'internal_node_id',
+    'start_position', 'goal_position', 'wall_positions', 'distance_from_goal',
     'bonus',
-    'trial_duration_ms',
-    'planning_duration_ms',
-    'observe_duration_ms',
-    'path_to_goal',
-    'click_events',
-    'quicksand_instance_info',
-    'environment_instance'
+    'trial_duration_ms', 'planning_duration_ms', 'observe_duration_ms',
+    'path_to_goal', 'click_events', 'quicksand_instance_info', 'environment_instance'
 ]
 
 world_df_json = ['states']
