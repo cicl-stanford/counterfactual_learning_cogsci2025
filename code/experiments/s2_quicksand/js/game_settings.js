@@ -3,7 +3,7 @@ gs = {
     project: "counterfactual_learning",
     experiment: "s2_quicksand",
     datapipe_experiment_id: "jbEe0AXceqHt",
-    iteration_name: "friendsandfamily2",
+    iteration_name: "fullstudy",
     stimuli_index: 0,
     dev_mode: true,
     condition: undefined, // observation, counterfactual
