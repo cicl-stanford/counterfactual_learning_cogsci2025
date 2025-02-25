@@ -119,8 +119,7 @@ def save_processed_data(session_df, block_df, quicksand_df, experiment_config):
     project_dir = os.path.abspath('../../')
     save_dir = os.path.join(
         project_dir, 'data',
-        experiment_config['criteria']['experiment'],
-        experiment_config['criteria']['iteration_name']
+        experiment_config['criteria']['experiment']
     )
 
     os.makedirs(save_dir, exist_ok=True)

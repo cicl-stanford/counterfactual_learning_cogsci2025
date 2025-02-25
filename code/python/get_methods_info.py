@@ -9,8 +9,7 @@ def load_dataframes(experiment_config):
     project_dir = os.path.abspath('../..')
     data_dir = os.path.join(
         project_dir, 'data',
-        experiment_config['criteria']['experiment'],
-        experiment_config['criteria']['iteration_name']
+        experiment_config['criteria']['experiment']
     )
 
     session_df = pd.read_csv(os.path.join(data_dir, 'session_data.csv'))
@@ -93,9 +92,8 @@ def process_experiment(study_key):
     project_dir = os.path.abspath('../..')
     data_dir = os.path.join(
         project_dir, 'data',
-        settings['criteria']['experiment'],
-        settings['criteria']['iteration_name']
-    )
+        settings['criteria']['experiment'])
+    
     save_path = os.path.join(data_dir, 'methods_vars.tex')
     save_methods_info_to_latex(methods_info, save_path)
 
