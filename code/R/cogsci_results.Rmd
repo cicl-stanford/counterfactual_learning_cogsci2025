@@ -60,7 +60,7 @@ if (!dir.exists(cache_dir)) {
 }
 
 # Optional: Force brms to refit models
-options(brms.file_refit = "always")
+# options(brms.file_refit = "always")
 
 ```
 
@@ -163,34 +163,6 @@ mcmc_areas(posterior,
            prob = 0.95) +  # Show 95% credible intervals
   ggtitle("Posterior Distributions of Coefficients") +
   xlab("Estimate")
-```
-
-
-```{r}
-# fit.s1_manipulation_check = quicksand_df_s1 %>% 
-#   left_join(world_df_s1 %>% select(world_id, world_spec_id), by = "world_id") %>%
-#   rename(environment = world_spec_id) %>% 
-#   filter(condition %in% c('hypothetical', 'counterfactual')) %>%
-#   mutate(counterfactual = as.numeric(trial_type == 'quicksand-simulate')) %>% 
-#   brm(
-#     formula = hazard_count ~ 1 + counterfactual + (1 + counterfactual | game_id) + (1 | environment),
-#     family = poisson(),
-#     seed = 1,
-#     cores = parallel::detectCores(),
-#     file = 'cache/fit.s1_manipulation_check'
-#   )
-# 
-# summary(fit.s1_manipulation_check)
-# 
-# fit.s1_manipulation_check %>% 
-#   emmeans(specs=pairwise~counterfactual)
-# 
-# posterior <- as_draws_df(fit.s1_manipulation_check)
-# mcmc_areas(posterior, 
-#            pars = c("b_Intercept", "b_counterfactual"),
-#            prob = 0.95) +  # Show 95% credible intervals
-#   ggtitle("Posterior Distributions of Coefficients") +
-#   xlab("Estimate")
 ```
 
 ### Hypothesis 1: Counterfactual simulation produces safer paths than the other conditions
@@ -445,89 +417,6 @@ world_df_s2 <- world_df_s2 %>%
 ```{r}
 path_type_levels <- c("experience", "hypothetical", "counterfactual")
 
-
-# Pilot Study: Manipulation Check
-fig_s1_manipulation <- quicksand_df_s1 %>%
-  mutate(path_type = case_when(
-      trial_type == "quicksand-simulate" & condition == "experience + hypothetical" ~ "hypothetical",
-      trial_type == "quicksand-simulate" & condition == "experience + counterfactual" ~ "counterfactual",
-      TRUE ~ "experience" # Force experience level
-    ),
-    path_type = factor(path_type, levels = path_type_levels)
-  ) %>%
-  ggplot(aes(x = path_type, 
-             y = hazard_count, 
-             fill = path_type)) +
-  stat_summary(fun = mean, 
-               geom = "bar", 
-               color = "black") +
-  stat_summary(fun.data = mean_cl_boot, 
-               geom = "linerange", 
-               width = 0.2) +
-  scale_fill_manual(values = trial_palette) +
-  scale_y_continuous(breaks = seq(0, 5, 1), 
-                     limit = c(0, 5),
-                     expand = expansion(mult = 0.01)) +
-  labs(title = "Study 1",
-       x = "Path type",
-       y = "Unsafe tiles in path",
-       fill = "Path type")
-
-# Full Study: Manipulation Check
-fig_s2_manipulation <- quicksand_df_s2 %>%
-  filter(condition == "experience + counterfactual") %>%
-  mutate(trial_type = recode(trial_type, "navigation" = "experience")) %>%
-  mutate(path_type = factor(trial_type, levels = path_type_levels)) %>%
-  ggplot(aes(x = path_type, 
-             y = hazard_count, 
-             fill = path_type)) +
-  stat_summary(fun = mean, 
-               geom = "bar", 
-               color = "black") +
-  stat_summary(fun.data = mean_cl_boot, 
-               geom = "linerange", 
-               width = 0.2) +
-  scale_fill_manual(values = trial_palette,
-                    breaks = path_type_levels,
-                    drop = FALSE) +
-  scale_y_continuous(breaks = seq(0, 5, 1), 
-                     limit = c(0, 5),
-                     expand = expansion(mult = 0.01)) +
-  labs(title = "Study 2",
-       y = " ",
-       x = "Trial type",
-       fill = "Path type") + 
-  guides(fill = "none")
-
-legend_plot <- ggplot(data.frame(path_type = path_type_levels), 
-                      aes(x = path_type, fill = path_type)) +
-  geom_bar() +  # Dummy plot to create legend
-  scale_fill_manual(values = trial_palette, name = "Path type") +
-  theme_minimal() + 
-  theme(legend.position = "bottom") 
-
-# Combine Plots in One Row
-fig_combined_manipulation <- fig_s1_manipulation + fig_s2_manipulation +
-  plot_layout(ncol = 2, guides = "collect") &
-  plot_annotation(tag_levels = "A") & # uses plot.tag
-  theme(axis.title.x = element_blank(),
-        axis.text.x = element_blank(),
-        axis.line.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        panel.grid.major.y = element_line(),
-        legend.position = "bottom",
-        legend.margin = margin(-10, 0, 0, 0))
-
-ggsave(file.path(figures_dir, "temp.pdf"), width = 7, height = 3, useDingbats = FALSE)
-
-fig_combined_manipulation
-
-```
-
-```{r}
-path_type_levels <- c("experience", "hypothetical", "counterfactual")
-
-
 # Pilot Study: Manipulation Check
 fig_s1_manipulation <- quicksand_df_s1 %>%
   filter(trial_type == "quicksand-simulate") %>%
@@ -603,7 +492,7 @@ fig_combined_manipulation <- fig_s1_manipulation + fig_s2_manipulation +
         legend.position = "bottom",
         legend.margin = margin(-10, 0, 0, 0))
 
-# ggsave(file.path(figures_dir, "manipulation_check.pdf"), width = 7, height = 3, useDingbats = FALSE)
+ggsave(file.path(figures_dir, "manipulation_check.pdf"), width = 7, height = 3, useDingbats = FALSE)
 
 fig_combined_manipulation
 
@@ -686,56 +575,6 @@ fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 +
         legend.margin = margin(-10, 0, 0, 0))
 
 ggsave(file.path(figures_dir, 'hypothesis1.pdf'), width = 7, height = 4, useDingbats = FALSE)
-
-fig_combined
-
-```
-
-```{r}
-# Pilot Study: Individual Unsafe Tiles in Path
-fig_s1_hyp1 <- quicksand_df_s1 %>%
-  filter(trial_type == "quicksand-planner") %>%
-  ggplot(aes(x = day, 
-             y = hazard_count, 
-             color = condition, 
-             group = game_id)) +  # Individual trajectories
-  geom_line(alpha = 0.3, size = 0.5) +  # Many lines, so lower alpha
-  scale_color_manual(values = condition_palette,
-                     labels = condition_legend_labels) +
-  # scale_y_continuous(breaks = seq(4.0, 5.4, 0.2), 
-  #                    expand = expansion(mult = 0.01)) +
-  # coord_cartesian(ylim = c(4.0, 5.4)) +
-  labs(title = "Study 1",
-       x = "Day",
-       y = "Unsafe tiles",
-       color = "Condition") +
-  guides(color = guide_legend(nrow = 1))
-
-# Full Study: Individual Unsafe Tiles in Path
-fig_s2_hyp1 <- quicksand_df_s2 %>%
-  filter(trial_type == "navigation") %>%
-  ggplot(aes(x = day, 
-             y = hazard_count, 
-             color = condition, 
-             group = game_id)) +  # Individual trajectories
-  geom_line(alpha = 0.3, size = 0.5) +  # Many lines, so lower alpha
-  scale_color_manual(values = condition_palette) +
-  # scale_y_continuous(breaks = seq(3.8, 4.5, 0.1), 
-  #                    expand = expansion(mult = 0.01)) +
-  # coord_cartesian(ylim = c(3.8, 4.5)) +
-  labs(title = "Study 2",
-       y = " ",
-       x = "Day") +
-  guides(color = "none")  # Remove legend since shared in first plot
-
-# Combine Plots in One Row
-fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 + 
-  plot_layout(ncol = 2, guides = "collect") & 
-  theme(axis.title.x = element_blank(),
-        panel.grid.major.y = element_line(),
-        legend.position = "bottom",
-        legend.margin = margin(-10, 0, 0, 0))
-
 
 fig_combined
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Step 1: Run Python scripts
 echo "Running get_data.py..."
 python ./code/python/get_data.py
 
@@ -10,7 +9,6 @@ python ./code/python/compute_derived_variables.py
 echo "Running get_methods_info.py..."
 python ./code/python/get_methods_info.py
 
-# Step 2: Run R Markdown analysis
 echo "Running cogsci_results.Rmd..."
 Rscript -e "rmarkdown::render('code/R/cogsci_results.Rmd')"
 

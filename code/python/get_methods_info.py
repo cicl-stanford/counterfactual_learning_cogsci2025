@@ -89,7 +89,6 @@ def process_experiment(study_key):
 
     methods_info = summarize_methods_info(session_df, settings)
 
-    # Save the LaTeX-formatted methods info
     python_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.abspath(os.path.join(python_dir, '..', '..'))
     data_dir = os.path.join(

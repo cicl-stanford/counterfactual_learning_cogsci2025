@@ -46,7 +46,7 @@ class OSFDataHandler:
         return response.content.decode('utf-8')
 
     def fetch_node_files(self, provider='osfstorage'):
-        url = f'https://api.osf.io/v2/nodes/{self.node_id}/files/{provider}/?sort=date_modified&page[size]=500'
+        url = f'https://api.osf.io/v2/nodes/{self.node_id}/files/{provider}/?sort=date_modified&page[size]=100'
         headers = {"Cache-Control": "no-cache"}
         if self.ACCESS_TOKEN:
             headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
