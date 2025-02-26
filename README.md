@@ -86,7 +86,7 @@ bash run_project.sh
 ## Experiments
 
 <p align="center" style="font-size: smaller">
-  <img width="50%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/figures/schemas/fig_experiment_cogsci.png"></img><br/>
+  <img width="80%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/figures/schemas/fig_experiment_cogsci.png"></img><br/>
   Experiment overview
 </p>
 
