@@ -41,9 +41,10 @@ These findings shed new light on the scope of learning by thinking—suggesting 
 ## Experiment pre-registration & demo
 
 The experiment reported in these results was pre-registered on the [Open Science Framework](https://help.osf.io/article/158-create-a-preregistration).
-Our pre-registration can be found [here](https://anonymous.4open.science/r/cogsci2025-0348/README.md).
+Our pre-registration can be found [here](https://osf.io/tzha7/?view_only=989096283435445fa1d72d472ceafc9f).
 
-A demo of the experiment can be found [here](https://justintheyang.github.io/experiment_demos/counterfactual_learning/index.html).
+A demo of the experiment can be found (link omitted due to deanonymizing URL)
+<!-- [here](https://justintheyang.github.io/experiment_demos/counterfactual_learning/index.html). -->
 
 
 ## Repository structure
@@ -70,20 +71,95 @@ A demo of the experiment can be found [here](https://justintheyang.github.io/exp
     * `/schemas`: overview figures illustrating the task.
 
 ## Set up
-TODO: here we talk about how to run everything to get all results. 
+
+The project uses Python 3 (tested on 3.10). We recommend using conda to set up the analysis environment:
+```
+conda env create -f environment.yml
+conda activate counterfactual_learning
+```
+
+With the python environment set up, the follwing command will download and preprocess all data, and then run all analyses: 
+```
+bash run_project.sh
+```
 
 ## Experiments
-TODO: here we talk about the experiment (a high level overview)
+
+<p align="center" style="font-size: smaller">
+  <img width="50%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/figures/schemas/fig_experiment_cogsci.pdf"></img><br/>
+  Experiment overview
+</p>
+
+Our experiment examined how people use counterfactual simulation to learn a better mental model of the environment. 
+A detailed explanation of the experimental design procedure is documented in the [study preregistration](https://osf.io/tzha7/?view_only=989096283435445fa1d72d472ceafc9f).
+
+Participants navigated a series of $8x3$ grid worlds whose cells were either sand or quicksand. 
+Some cells were walls, blocking access to that tile. 
+They were asked to make a path from start to goal, avoiding as much quicksand as possible. 
+The participants had to plan a full sequence from the start location, without any knowledge of whether a tile was quicksand. 
+They instead learned how frequently a tile was quicksand through repeated interactions in the environment. 
+
+Demos for each experiment are available [here](https://justintheyang.github.io/experiment_demos/action_abstraction/index.html).
+
+### Study 1
+Participants completed 15 *experience* trials in a block. 
+
+<p align="center" style="font-size: smaller">
+  <img width="75%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/code/experiments/s1_quicksand/assets/instructions/figs/6_make_a_plan.gif?raw=true"></img><br/>
+  Example experience trial.
+</p>
+
+They were assigned to one of three between-subjects conditions:
+- In the *experience* condition, this is all they did. 
+- In the *hypothetical + experience* condition, after each experience trial they completed a hypothetical trial:
+
+<p align="center" style="font-size: smaller">
+  <img width="75%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/code/experiments/s1_quicksand/assets/instructions/figs/7h_hypothetical_plan.gif?raw=true"></img><br/>
+  Example hypothetical trial.
+</p>
+
+- In the *counterfactual + experience* condition, after each experience trial they completed a counterfactual trial:
+<p align="center" style="font-size: smaller">
+  <img width="75%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/code/experiments/s1_quicksand/assets/instructions/figs/7c_counterfactual_plan.gif?raw=true"></img><br/>
+  Example hypothetical trial.
+</p>
+
+Code for this experiment can be found in `code/experiments/s1_quicksand`.
+
+### Study 2
+Study 2 was nearly identical to the first, except that participants completed an *exam* trial after each each block, where they indicated whether they thought a tile was safe or unsafe:
+<p align="center" style="font-size: smaller">
+  <img width="75%" src="https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/code/experiments/s2_quicksand/assets/instructions/figs/8_exam_safe.gif?raw=true"></img><br/>
+  Example exam trial.
+</p>
+
+Participants were also assigned to either the *experience* or *counterfactual + experience* condition.
+
+Code for this experiment can be found in `code/experiments/s2_quicksand`.
 
 ## Empirical analyses
-TODO: here we outline the python and r files
-"...we include all analyses in the reported in the paper" 
+To reproduce the empirical analyses found in the paper, you can run
+```
+bash run_project.sh
+```
 
+Here is an overview of what each analysis file does:
 * `/python`
-    * `get_data.py`: ...
-    * `config.py`: ...
+    * `config.py`: contains metadata and global variables useful for setting up the clean datasets.
+    * `get_data.py`: converts the raw participant data stored using [`jspsych-datapipe`](https://pipe.jspsych.org/) into clean dataframes.
+    * `get_methods_info.py`: generates `*.tex` files containing variables used for methods reporting in the manuscript. 
+    * `compute_derived_variables.py`: computes the derived variables defined in the [preregistration](https://osf.io/tzha7/?view_only=989096283435445fa1d72d472ceafc9f).
+    * `osf_data_handler.py`: interfaces with the OSF API to pull data from the experiment. 
 * `/R`
-    * `...`
+    * `cogsci_results.Rmd`: runs all bayesian regressions and generates result figures using the tidy dataframes from the above python scripts.
+
+For each experiment, the data is separated into three CSV files:
+- `session_data.csv`: contains session-level data, such as participant browser information and demographics.
+- `world_data.csv`: contains block-level data, such as participant exam trial responses and ground truth environment probabilities. 
+- `trial_data.csv`: contains trial-level data (i.e., one row for each experience, counterfactual, or hypothetical navigation trial), such as the path taken to navigate to the goal. 
+
+A detailed description of each column can be found in the preregistration. 
+
 
 
 ## CRediT author statement
