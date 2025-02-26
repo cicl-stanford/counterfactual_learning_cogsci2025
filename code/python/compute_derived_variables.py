@@ -110,12 +110,13 @@ def compute_day(quicksand_df):
 
 def compute_hazard_count(row, quicksand_df):
     """Computes hazard counts for trials."""
-    if row.trial_type in ['quicksand-planner', 'navigation']:
+    
+    if row.trial_type == 'quicksand-planner':
         return sum(
             row.quicksand_instance_info[tuple(loc)]['prob_quicksand'] == 0.8
             for loc in row.path_to_goal
         )
-    elif row.trial_type in ['quicksand-simulate', 'counterfactual']:
+    elif row.trial_type == 'quicksand-simulate':
         linked_trial = quicksand_df.loc[quicksand_df.trial_id == row.navigation_trial_id].iloc[0]
         return sum(
             linked_trial.quicksand_instance_info[tuple(loc)]['prob_quicksand'] == 0.8
@@ -148,11 +149,12 @@ def compute_exam_trial_hazard_count(world_df, quicksand_df):
         return grid
 
     hazard_counts = []
-    for world_id, row in world_df.iterrows():
+    for _, row in world_df.iterrows():
+        world_id = row.world_id
         exam_grid = parse_exam_response(row.exam_response)
         navigation_trials = quicksand_df.loc[
             (quicksand_df.world_id == world_id) &
-            (quicksand_df.trial_type == 'navigation')
+            (quicksand_df.trial_type == 'quicksand-planner')
         ]
 
         simulated_num_hazards = []
@@ -171,38 +173,49 @@ def compute_exam_trial_hazard_count(world_df, quicksand_df):
 
     return hazard_counts
 
-
 # ---------- Main Processing ----------
 
 if __name__ == "__main__":
     print("Computing derived variables...")
-    project_dir = os.path.abspath('../..')
+    python_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.abspath(os.path.join(python_dir, '..', '..'))
     s1_dir = os.path.join(project_dir, 'data', 's1_quicksand')
     s2_dir = os.path.join(project_dir, 'data', 's2_quicksand')
 
     # s1 variables
     s1_quicksand_df = pd.read_csv(os.path.join(s1_dir, 'trial_data.csv'))
     process_json_columns(s1_quicksand_df, ['path_to_goal', 'quicksand_instance_info'])
+    
+    s1_quicksand_df['navigation_trial_id'] = s1_quicksand_df.instance_id.map({
+        value: key for key, value in s1_quicksand_df[s1_quicksand_df.trial_type == 'quicksand-planner']
+        .set_index('trial_id').instance_id.items()
+    })
 
     s1_quicksand_df['hazard_count'] = s1_quicksand_df.apply(
         lambda row: compute_hazard_count(row, s1_quicksand_df), axis=1
     )
     s1_quicksand_df['day'] = compute_day(s1_quicksand_df)
+    s1_quicksand_df.drop(columns=['navigation_trial_id'], inplace=True)
 
     s1_quicksand_df.to_csv(os.path.join(s1_dir, 'trial_data.csv'), index=False)
 
     # s2 variables
     s2_quicksand_df = pd.read_csv(os.path.join(s2_dir, 'trial_data.csv'))
     s2_world_df = pd.read_csv(os.path.join(s2_dir, 'world_data.csv'))
-    process_json_columns(s2_quicksand_df, ['path_to_goal', 'quicksand_instance_info'])
+    process_json_columns(s2_quicksand_df, ['start_position', 'goal_position', 'wall_positions', 'path_to_goal', 'quicksand_instance_info'])
     process_json_columns(s2_world_df, ['exam_response', 'states'])
 
+    s2_quicksand_df['navigation_trial_id'] = s2_quicksand_df.instance_id.map({
+        value: key for key, value in s2_quicksand_df[s2_quicksand_df.trial_type == 'quicksand-planner']
+        .set_index('trial_id').instance_id.items()
+    })
     s2_quicksand_df['hazard_count'] = s2_quicksand_df.apply(
         lambda row: compute_hazard_count(row, s2_quicksand_df), axis=1
     )
     s2_quicksand_df['day'] = compute_day(s2_quicksand_df)
     s2_world_df['exam_trial_correct_tiles'] = compute_exam_trial_correct_tiles(s2_world_df)
     s2_world_df['exam_trial_hazard_count'] = compute_exam_trial_hazard_count(s2_world_df, s2_quicksand_df)
+    s2_quicksand_df.drop(columns=['navigation_trial_id'], inplace=True)
 
     s2_quicksand_df.to_csv(os.path.join(s2_dir, 'trial_data.csv'), index=False)
     s2_world_df.to_csv(os.path.join(s2_dir, 'world_data.csv'), index=False)
