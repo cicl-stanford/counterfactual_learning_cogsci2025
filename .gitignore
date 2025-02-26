@@ -4,6 +4,4 @@
 
 **/*.csv
 **/*.rds
-**/R/*.html
-/figures/results/*
 /data/*

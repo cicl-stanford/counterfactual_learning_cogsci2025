@@ -3,10 +3,7 @@ pdf_document:
   toc: true
 author: "Justin Yang"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
-output:
-  html_document: null
-  toc: true
-  pdf_document: default
+output: pdf_document
 toc_depth: 3
 toc_float:
   collapsed: false
