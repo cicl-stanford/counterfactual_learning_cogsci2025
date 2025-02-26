@@ -116,7 +116,8 @@ def create_session_dataframe(dataframe, quicksand_df):
     return session_df
 
 def save_processed_data(session_df, block_df, quicksand_df, experiment_config):
-    project_dir = os.path.abspath('../../')
+    python_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.abspath(os.path.join(python_dir, '..', '..'))
     save_dir = os.path.join(
         project_dir, 'data',
         experiment_config['criteria']['experiment']
@@ -140,6 +141,8 @@ def process_experiment_data(study_key):
     quicksand_df = create_quicksand_dataframe(osf_data)
     block_df = create_block_dataframe(osf_data, settings)
     session_df = create_session_dataframe(osf_data, quicksand_df)
+
+    assert set(quicksand_df.game_id) == set(block_df.game_id) == set(session_df.game_id)
 
     save_processed_data(session_df, block_df, quicksand_df, settings)
 
