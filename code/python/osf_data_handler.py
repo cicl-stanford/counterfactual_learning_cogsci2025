@@ -31,7 +31,7 @@ class OSFDataHandler:
         raise ValueError(f"Filename {filename} does not match the expected pattern.")
 
     def download_csv_file(self, file_url):
-        headers = {}
+        headers = {"Cache-Control": "no-cache"}
         if self.ACCESS_TOKEN:
             headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
 
@@ -46,8 +46,8 @@ class OSFDataHandler:
         return response.content.decode('utf-8')
 
     def fetch_node_files(self, provider='osfstorage'):
-        url = f'https://api.osf.io/v2/nodes/{self.node_id}/files/{provider}/'
-        headers = {}
+        url = f'https://api.osf.io/v2/nodes/{self.node_id}/files/{provider}/?sort=date_modified&page[size]=500'
+        headers = {"Cache-Control": "no-cache"}
         if self.ACCESS_TOKEN:
             headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
 
@@ -62,7 +62,7 @@ class OSFDataHandler:
 
     def get_project_name(self):
         url = f'https://api.osf.io/v2/nodes/{self.node_id}/'
-        headers = {}
+        headers = {"Cache-Control": "no-cache"}
         if self.ACCESS_TOKEN:
             headers['Authorization'] = f'Bearer {self.ACCESS_TOKEN}'
 

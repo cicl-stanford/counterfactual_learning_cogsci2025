@@ -6,7 +6,8 @@ import config
 
 def load_dataframes(experiment_config):
     """Load pre-processed session, block, and quicksand data for a given experiment."""
-    project_dir = os.path.abspath('../..')
+    python_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.abspath(os.path.join(python_dir, '..', '..'))
     data_dir = os.path.join(
         project_dir, 'data',
         experiment_config['criteria']['experiment']
@@ -76,7 +77,7 @@ def write_latex_commands(data, prefix='', file_handle=None):
 def save_methods_info_to_latex(methods_info, save_path):
     """Save methods information as LaTeX commands in a .tex file."""
     with open(save_path, 'w') as f:
-        write_latex_commands(methods_info, f=f)
+        write_latex_commands(methods_info, file_handle=f)
     print(f"Methods info saved to {save_path}")
 
 def process_experiment(study_key):
@@ -89,7 +90,8 @@ def process_experiment(study_key):
     methods_info = summarize_methods_info(session_df, settings)
 
     # Save the LaTeX-formatted methods info
-    project_dir = os.path.abspath('../..')
+    python_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.abspath(os.path.join(python_dir, '..', '..'))
     data_dir = os.path.join(
         project_dir, 'data',
         settings['criteria']['experiment'])
