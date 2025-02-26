@@ -16,52 +16,53 @@ title: "cogsci_results"
 # Setup
 
 ```{r setup, include=F, message=F, warning=F}
-# load relevant libraries and functions
-require(knitr)         # for knitting        
-library(ggstatsplot)   # extension of ggplot2
-library(lme4)          # for mixed effects models 
-library(lmerTest)      # for p values in lmer
-library(DT)            # for datatable() function 
-library(brms)          # for Bayesian regression models
-library(Metrics)       # for RMSE
-library(Hmisc)         # for bootstrapped confidence intervals
-library(xtable)        # for converting to LaTex tables
-library(scales)        # hue palette
-library(lemon)         # shift_legend
-library(ggplotify)     # turn gtables into ggplots
-library(showtext)      # for fonts
-library(broom.mixed)   # for augmenting fitted models
-library(ggrepel)       # avoid overlap in geom_text
-library(patchwork)     # for multiple plots
-library(png)           # for working with images
-library(grid)          # for grob?
-library(egg)           # for geom_custom
-library(ggtext)        # for styling ggplot text
-library(bayesplot)     # for plotting brms models
-library(showtext)      # for fonts
-library(emmeans)       # for post-hoc comparisons
-library(tidyverse)     # for everything else
+# Function to automatically install and load packages
+install_and_load <- function(packages) {
+  for (pkg in packages) {
+    if (!require(pkg, character.only = TRUE)) {
+      message(paste("Installing", pkg, "package..."))
+      install.packages(pkg, dependencies = TRUE)
+      
+      if (!require(pkg, character.only = TRUE)) {
+        stop(paste("Package", pkg, "could not be installed or loaded."))
+      }
+    }
+    library(pkg, character.only = TRUE)
+  }
+}
 
-knitr::opts_chunk$set(echo = T, warning = F, message = F)
 
-# set default plot theme 
-theme_set(theme_classic() + theme(text = element_text(size = 14))) 
+required_packages <- c(
+  "knitr", "ggstatsplot", "lme4", "lmerTest", "DT", "brms", "Metrics",
+  "Hmisc", "xtable", "scales", "lemon", "ggplotify", "showtext", 
+  "broom.mixed", "ggrepel", "patchwork", "png", "grid", "egg", 
+  "ggtext", "bayesplot", "emmeans", "tidyverse"
+)
 
-# suppress warnings about grouping 
-options(dplyr.summarise.inform = F)
-options(xtable.floating = F)
-options(xtable.timestamp = "")
+install_and_load(required_packages)
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+# Set default plot theme
+theme_set(theme_classic() + theme(text = element_text(size = 14)))
 
 set.seed(1)
 
-data_dir_s1 = '../../data/s1_quicksand/pilot5/'
-data_dir_s2 = '../../data/s2_quicksand/fullstudy/'
-figures_dir = '../../figures/cogsci2025/'
+# Directories
+project_dir <- normalizePath(file.path(getwd(), "..", ".."))
+data_dir_s1 <- file.path(project_dir, "data", "s1_quicksand")
+data_dir_s2 <- file.path(project_dir, "data", "s2_quicksand")
+figures_dir <- file.path(project_dir, "figures", "results")
 
-# set brms to refit models every time. comment out when we think things converge
-# options(brms.file_refit = "always")
+cache_dir <- file.path(getwd(), "cache")
+if (!dir.exists(cache_dir)) {
+  dir.create(cache_dir)
+}
+
+# Optional: Force brms to refit models
+options(brms.file_refit = "always")
+
 ```
-
 
 ```{r}
 # set style
@@ -78,7 +79,7 @@ trial_palette = c(
     "counterfactual" = "#C04225"
   )
 
-# only do if user if me (justyang)
+# only do if user if me (justyang) as its a custom font
 if (Sys.info()['user'] == 'justyang') {
   font_add("AkzidenzGrotesk", "/Users/justyang/Library/Fonts/AkzidenzGroteskBE-Regular.otf")
   showtext_auto()
@@ -102,25 +103,35 @@ session_df_s1 = read_csv(file.path(data_dir_s1, 'session_data.csv'))
 world_df_s1 = read_csv(file.path(data_dir_s1, 'world_data.csv'))
 quicksand_df_s1 = read_csv(file.path(data_dir_s1, 'trial_data.csv'))
 
-session_df_s2 = read_csv(file.path(data_dir_s2, 'session_data_r.csv'))
-world_df_s2 = read_csv(file.path(data_dir_s2, 'world_data_r.csv'))
-quicksand_df_s2 = read_csv(file.path(data_dir_s2, 'trial_data_r.csv'))
+session_df_s2 = read_csv(file.path(data_dir_s2, 'session_data.csv'))
+world_df_s2 = read_csv(file.path(data_dir_s2, 'world_data.csv'))
+quicksand_df_s2 = read_csv(file.path(data_dir_s2, 'trial_data.csv'))
+
 
 bins = 3
 day_labels = paste0("split ", 1:bins, " of ", bins)
+
 quicksand_df_s1 <- quicksand_df_s1 %>%
+  mutate(days_binned = cut_number(day, bins, labels = day_labels))
+quicksand_df_s2 <- quicksand_df_s2 %>%
   mutate(days_binned = cut_number(day, bins, labels = day_labels))
 
 quicksand_df_s1 <- quicksand_df_s1 %>% 
   mutate(condition = factor(condition, levels = c("observation", "hypothetical", "counterfactual")))
-
 quicksand_df_s2 <- quicksand_df_s2 %>% 
-  mutate(condition = factor(condition, levels = c("observation", "hypothetical", "counterfactual")))  # Even if 
+  mutate(condition = factor(condition, levels = c("observation", "hypothetical", "counterfactual")))  
+
+quicksand_df_s2 <- quicksand_df_s2 %>%
+  mutate(trial_type = recode(
+    trial_type,
+    "quicksand-planner" = "navigation",
+    "quicksand-simulate" = "counterfactual"
+  ))
 ```
 
 # Analysis
 
-## Pilot results
+## Study 1 results
 
 ### Simulation path performance
 
@@ -130,8 +141,9 @@ quicksand_df_s2 <- quicksand_df_s2 %>%
 fit.s1_manipulation_check = quicksand_df_s1 %>% 
   left_join(world_df_s1 %>% select(world_id, world_spec_id), by = "world_id") %>%
   rename(environment = world_spec_id) %>% 
-  filter(condition %in% c('hypothetical', 'counterfactual')) %>%
-  mutate(counterfactual = as.numeric(trial_type == 'quicksand-simulate')) %>% 
+  filter(condition %in% c('hypothetical', 'counterfactual'),
+         trial_type == 'quicksand-simulate') %>%
+  mutate(counterfactual = as.numeric(condition == 'counterfactual')) %>% 
   brm(
     formula = hazard_count ~ 1 + counterfactual + (1 + counterfactual | game_id) + (1 | environment),
     family = poisson(),
@@ -140,45 +152,46 @@ fit.s1_manipulation_check = quicksand_df_s1 %>%
     file = 'cache/fit.s1_manipulation_check'
   )
 
-# summary(fit.s1_manipulation_check)
+summary(fit.s1_manipulation_check)
 
 fit.s1_manipulation_check %>% 
   emmeans(specs=pairwise~counterfactual)
-```
-```{r}
+
 posterior <- as_draws_df(fit.s1_manipulation_check)
 mcmc_areas(posterior, 
            pars = c("b_Intercept", "b_counterfactual"),
            prob = 0.95) +  # Show 95% credible intervals
   ggtitle("Posterior Distributions of Coefficients") +
   xlab("Estimate")
-
 ```
 
 
 ```{r}
-fit.s1_flat_priors = quicksand_df_s1 %>% 
-  left_join(world_df_s1 %>% select(world_id, world_spec_id), by = "world_id") %>%
-  rename(environment = world_spec_id) %>%
-  filter(condition %in% c('hypothetical', 'counterfactual')) %>%
-  mutate(condition = factor(condition, levels = c("hypothetical", "counterfactual"))) %>%
-  brm(
-    formula = simulation_hazard_count_flat_priors ~ 1 + condition + (1 + condition | game_id) + (1 | environment),
-    family = poisson(),
-    seed = 1,
-    cores = parallel::detectCores(), # refit model
-    file_refit = "always",
-    file = 'cache/fit.s1_flat_priors'
-  )
-
-# summary(fit.s1_flat_priors)
-
-fit.s1_flat_priors %>% 
-  emmeans(specs=pairwise~condition, type = "response")
-
-
+# fit.s1_manipulation_check = quicksand_df_s1 %>% 
+#   left_join(world_df_s1 %>% select(world_id, world_spec_id), by = "world_id") %>%
+#   rename(environment = world_spec_id) %>% 
+#   filter(condition %in% c('hypothetical', 'counterfactual')) %>%
+#   mutate(counterfactual = as.numeric(trial_type == 'quicksand-simulate')) %>% 
+#   brm(
+#     formula = hazard_count ~ 1 + counterfactual + (1 + counterfactual | game_id) + (1 | environment),
+#     family = poisson(),
+#     seed = 1,
+#     cores = parallel::detectCores(),
+#     file = 'cache/fit.s1_manipulation_check'
+#   )
+# 
+# summary(fit.s1_manipulation_check)
+# 
+# fit.s1_manipulation_check %>% 
+#   emmeans(specs=pairwise~counterfactual)
+# 
+# posterior <- as_draws_df(fit.s1_manipulation_check)
+# mcmc_areas(posterior, 
+#            pars = c("b_Intercept", "b_counterfactual"),
+#            prob = 0.95) +  # Show 95% credible intervals
+#   ggtitle("Posterior Distributions of Coefficients") +
+#   xlab("Estimate")
 ```
-
 
 ### Hypothesis 1: Counterfactual simulation produces safer paths than the other conditions
 
@@ -198,19 +211,14 @@ fit.s1_hypothesis1 = quicksand_df_s1 %>%
     file = 'cache/fit.s1_hypothesis1'
   )
 
-# summary(fit.s1_hypothesis1)
+summary(fit.s1_hypothesis1)
 
 fit.s1_hypothesis1 %>% # in non-log scale
-  emmeans(specs=pairwise~condition) 
+  emmeans(specs = pairwise~condition) 
   
 fit.s1_hypothesis1 %>% # in non-log scale
   emtrends(specs = pairwise~condition, var = "day") 
 
-```
-
-
-
-```{r}
 posterior <- as_draws_df(fit.s1_hypothesis1)
 mcmc_areas(posterior, 
            regex_pars = "b_condition",
@@ -239,19 +247,17 @@ fit.s1_hypothetical = quicksand_df_s1 %>%
     file = 'cache/fit.s1_hypothetical'
   )
 
-# summary(fit.s1_hypothetical)
+summary(fit.s1_hypothetical)
 
 fit.s1_hypothetical %>%
-  emmeans(specs=pairwise~condition)
+  emmeans(specs = pairwise~condition)
 
 fit.s1_hypothetical %>%
   emtrends(specs = pairwise~condition, var = "day")
 
 ```
 
-
-
-## Full study results
+## Study 2 results
 
 We follow the analysis plan outlined in the preregistration: <https://osf.io/tzha7>.
 
@@ -261,10 +267,11 @@ We follow the analysis plan outlined in the preregistration: <https://osf.io/tzh
 
 In counterfactual simulation trials, participants make paths from start to goal, conditioning on the outcome of their previous experience. With the task of improving on their previous plan, we should expect that participants’ counterfactual paths should at minimum be as good as their previous path, as that would simply amount to retracing their previous steps. So we test participants’ understanding or engagement of the counterfactual trials by first asking if participants’ counterfactual paths outperform their actual paths by fitting a Bayesian mixed-effects model on the number of unsafe tiles in a path between matched actual and counterfactual paths:
 
+```         
 hazard_count ~ 1 + counterfactual + (1 + counterfactual | participant) + (1 | environment)
+```
 
-Here we encode for each trial, the number of unsafe tiles on the actual path (counterfactual = 0) and the number of unsafe tiles on the counterfactual path (counterfactual = 1). We expect the mean posterior distribution on the parameter for “counterfactual” to be negative, and that the 95% credible interval of that distribution excludes 0. For this and all future analyses that model the number of unsafe tiles in a path, we will assume a Poisson distribution.   
-
+Here we encode for each trial, the number of unsafe tiles on the actual path (counterfactual = 0) and the number of unsafe tiles on the counterfactual path (counterfactual = 1). We expect the mean posterior distribution on the parameter for “counterfactual” to be negative, and that the 95% credible interval of that distribution excludes 0. For this and all future analyses that model the number of unsafe tiles in a path, we will assume a Poisson distribution.
 
 ```{r}
 fit.s2_manipulation_check = quicksand_df_s2 %>% 
@@ -280,13 +287,11 @@ fit.s2_manipulation_check = quicksand_df_s2 %>%
     file = 'cache/fit.s2_manipulation_check'
   )
 
-# summary(fit.s2_manipulation_check)
+summary(fit.s2_manipulation_check)
 
 fit.s2_manipulation_check %>% 
   emmeans(specs=pairwise~counterfactual)
-```
 
-```{r}
 posterior <- as_draws_df(fit.s2_manipulation_check)
 mcmc_areas(posterior, 
            pars = c("b_Intercept", "b_counterfactual"),
@@ -296,10 +301,10 @@ mcmc_areas(posterior,
 
 ```
 
-
 ### Hypothesis 1: Counterfactual simulation produces safer paths
 
 Does engaging in counterfactual simulation result in fewer encounters with hazards when navigating a gridworld environment? Our analysis will consist of understanding whether participants assigned to the counterfactual condition encounter fewer hazards on navigation trials, for which we use the following Bayesian mixed-effects model structure (using a Poisson distribution):
+
 ```{r}
 fit.s2_hypothesis1 = quicksand_df_s2 %>% 
   left_join(world_df_s2 %>% select(world_id, world_spec_id), by = "world_id") %>%
@@ -316,7 +321,7 @@ fit.s2_hypothesis1 = quicksand_df_s2 %>%
     file = 'cache/fit.s2_hypothesis1'
   )
 
-# summary(fit.s2_hypothesis1)
+summary(fit.s2_hypothesis1)
 
 fit.s2_hypothesis1 %>%
   emmeans(specs=pairwise~condition)
@@ -325,9 +330,6 @@ fit.s2_hypothesis1 %>%
 fit.s2_hypothesis1 %>%
   emtrends(specs = pairwise~condition, var = "day")
 
-```
-
-```{r}
 posterior <- as_draws_df(fit.s2_hypothesis1)
 mcmc_areas(posterior, 
            pars = c("b_condition", "b_day", "b_condition:day"),
@@ -337,13 +339,15 @@ mcmc_areas(posterior,
 
 ```
 
+
 ### Hypothesis 2: Counterfactual simulation produces a more accurate mental model of the environment
 
-Our primary analysis in this experiment focuses on whether participants’ ability to reason counterfactually could result in a greater understanding of their environment. We operationalize this notion of understanding in an exam trial where participants mark which tiles they think are safe or unsafe in their gridworld environment. 
+Our primary analysis in this experiment focuses on whether participants’ ability to reason counterfactually could result in a greater understanding of their environment. We operationalize this notion of understanding in an exam trial where participants mark which tiles they think are safe or unsafe in their gridworld environment.
 
 #### Hypothesis 2a: Exam accuracy
 
-We compare the accuracies of the responses in the exam trials across the observation and counterfactual conditions. We predict that responses in the counterfactual condition will be more accurate than those in the observational condition. 
+We compare the accuracies of the responses in the exam trials across the observation and counterfactual conditions. We predict that responses in the counterfactual condition will be more accurate than those in the observational condition.
+
 ```{r}
 fit.s2_hypothesis2a = world_df_s2 %>% 
   rename(environment = world_spec_id) %>% 
@@ -357,14 +361,11 @@ fit.s2_hypothesis2a = world_df_s2 %>%
     file = 'cache/fit.s2_hypothesis2a'
   )
 
-# summary(fit.s2_hypothesis2a)
+summary(fit.s2_hypothesis2a)
 
 fit.s2_hypothesis2a %>%
   emmeans(specs=pairwise~condition)
 
-```
-
-```{r}
 posterior <- as_draws_df(fit.s2_hypothesis2a)
 mcmc_areas(posterior, 
            pars = c("b_Intercept", "b_condition"),
@@ -374,10 +375,10 @@ mcmc_areas(posterior,
 
 ```
 
-
 #### Hypothesis 2b: Exam path safety
 
 It may be possible that participants in the counterfactual condition learn a more accurate model of the environment particularly where it matters. So we also predict that rational planning under beliefs obtained in the counterfactual condition will result in encountering fewer hazards than those obtained in the observation condition.
+
 ```{r}
 fit.s2_hypothesis2b = world_df_s2 %>% 
   rename(environment = world_spec_id) %>% 
@@ -392,7 +393,7 @@ fit.s2_hypothesis2b = world_df_s2 %>%
     file = 'cache/fit.s2_hypothesis2b',
   )
 
-# summary(fit.s2_hypothesis2b)
+summary(fit.s2_hypothesis2b)
 
 fit.s2_hypothesis2b %>%
   emmeans(specs=pairwise~condition)
@@ -408,8 +409,6 @@ mcmc_areas(posterior,
   xlab("Estimate")
 
 ```
-
-
 
 # Plots
 
@@ -442,7 +441,6 @@ world_df_s2 <- world_df_s2 %>%
 ```
 
 ## Manipulation check: Simulated paths
-
 
 ```{r}
 path_type_levels <- c("experience", "hypothetical", "counterfactual")
@@ -525,8 +523,6 @@ ggsave(file.path(figures_dir, "temp.pdf"), width = 7, height = 3, useDingbats = 
 fig_combined_manipulation
 
 ```
-
-
 
 ```{r}
 path_type_levels <- c("experience", "hypothetical", "counterfactual")
@@ -745,76 +741,6 @@ fig_combined
 
 ```
 
-
-```{r}
-# # Pilot Study: Unsafe Tiles in Path
-# fig_s1_hyp1 <- quicksand_df_s1 %>%
-#   filter(trial_type == "quicksand-planner") %>%
-#   ggplot(aes(x = days_binned, 
-#              y = hazard_count, 
-#              color = condition, 
-#              group = condition)) +
-#   stat_summary(fun = mean, 
-#                geom = "point", 
-#                size = 3) +
-#   stat_summary(fun.data = mean_cl_boot, 
-#                geom = "errorbar", 
-#                width = 0.2) +
-#   stat_summary(fun = mean, 
-#                geom = "line") +
-#   scale_color_manual(values = condition_palette,
-#                      labels = condition_legend_labels) + 
-#   scale_x_discrete(labels = day_split_labels) +
-#   scale_y_continuous(breaks = seq(3.8, 5.4, 0.2), 
-#                      expand = expansion(mult = 0.01)) +
-#   coord_cartesian(ylim = c(3.8, 5.4)) +
-#   labs(title = NULL,
-#        x = "Trial order (binned)",
-#        y = "Unsafe tiles",
-#        color = "Condition") + 
-#   guides(color = guide_legend(nrow = 1))
-# 
-# # Full Study: Unsafe Tiles in Path
-# fig_s2_hyp1 <- quicksand_df_s2 %>%
-#   filter(trial_type == "navigation") %>%
-#   ggplot(aes(x = days_binned, 
-#              y = hazard_count, 
-#              color = condition, 
-#              group = condition)) +
-#   stat_summary(fun = mean, 
-#                geom = "point", 
-#                size = 3) +
-#   stat_summary(fun.data = mean_cl_boot, 
-#                geom = "errorbar", 
-#                width = 0.2) +
-#   stat_summary(fun = mean, 
-#                geom = "line") +
-#   scale_color_manual(values = condition_palette) +
-#   scale_x_discrete(labels = day_split_labels) +
-#   scale_y_continuous(breaks = seq(3.8, 5.4, 0.2), 
-#                      expand = expansion(mult = 0.01)) +
-#   coord_cartesian(ylim = c(3.8, 5.4)) +
-#   labs(title = NULL,
-#        x = "Trial order (binned)",
-#        y = "Unsafe tiles") +
-#   guides(color = "none")
-# 
-# # Combine Plots in One Row
-# fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 + 
-#   plot_layout(ncol = 2, guides = "collect") & 
-#   theme(axis.title.x = element_blank(),
-#         panel.grid.major.y = element_line(),
-#         legend.position = "bottom",
-#         legend.margin = margin(-10, 0, 0, 0))
-# 
-# ggsave(file.path(figures_dir, "hypothesis1_yshared.pdf"), 
-#        units = "cm", 
-#        useDingbats = FALSE)
-# 
-# fig_combined
-
-```
-
 ## Hypothesis 2: Exam performance
 
 ```{r fig.width = 7, fig.height = 3}
@@ -890,39 +816,3 @@ fig_combined <- fig_exam_correct + fig_exam_hazard +
 ggsave(file.path(figures_dir, 'hypothesis2.pdf'), width = 7, height = 3, useDingbats = FALSE)
 fig_combined
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
