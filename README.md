@@ -4,7 +4,7 @@
 
 Presented at the 47th Annual Meeting of the Cognitive Science Society (2025; San Fransisco, CA).
 
-[Link to paper](https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/master/writeup/counterfactual_learning_cogsci2025.pdf)
+[Link to paper](https://github.com/cicl-stanford/counterfactual_learning_cogsci2025/blob/main/counterfactual_learning_cogsci2025.pdf)
 
 ```
 @inproceedings{yang2025counterfactuallearning,
