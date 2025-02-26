@@ -6,3 +6,10 @@ dependencies:
   - python=3.10
   - pandas
   - requests
+  - numpy
+  - matplotlib
+  - seaborn
+  - tqdm
+  - scipy
+  # - ipykernel
+  # - jupyter
