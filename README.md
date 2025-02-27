@@ -72,7 +72,7 @@ A demo of the experiment can be found (link omitted due to deanonymizing URL)
 
 ## Set up
 
-The project uses Python 3 (tested on 3.10). We recommend using conda to set up the analysis environment:
+The project uses Python 3 (tested on 3.10). Also, R should be installed and added to the PATH. We recommend using conda to set up the analysis environment:
 ```
 conda env create -f environment.yml
 conda activate counterfactual_learning
