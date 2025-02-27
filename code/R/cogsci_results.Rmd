@@ -15,6 +15,7 @@ title: "cogsci_results"
 ```{r setup, include=F, message=F, warning=F}
 # Function to automatically install and load packages
 install_and_load <- function(packages) {
+  options(repos = c(CRAN = "https://cloud.r-project.org/"))
   for (pkg in packages) {
     if (!require(pkg, character.only = TRUE)) {
       message(paste("Installing", pkg, "package..."))
