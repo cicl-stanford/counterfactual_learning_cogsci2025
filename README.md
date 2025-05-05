@@ -41,10 +41,9 @@ These findings shed new light on the scope of learning by thinking—suggesting 
 ## Experiment pre-registration & demo
 
 The experiment reported in these results was pre-registered on the [Open Science Framework](https://help.osf.io/article/158-create-a-preregistration).
-Our pre-registration can be found [here](https://osf.io/tzha7/?view_only=989096283435445fa1d72d472ceafc9f).
+Our pre-registration can be found [here](https://osf.io/tzha7).
 
-A demo of the experiment can be found (link omitted due to deanonymizing URL)
-<!-- [here](https://justintheyang.github.io/experiment_demos/counterfactual_learning/index.html). -->
+A demo of the experiment can be found [here](https://justintheyang.github.io/experiment_demos/counterfactual_learning/index.html).
 
 
 ## Repository structure
@@ -53,6 +52,7 @@ A demo of the experiment can be found (link omitted due to deanonymizing URL)
 ├── code
 │   ├── experiments
 │   ├── python
+│       ├── quicksand
 │   └── R
 ├── data/
 ├── figures
@@ -62,6 +62,7 @@ A demo of the experiment can be found (link omitted due to deanonymizing URL)
 * `/code`: code for experiments, as well as data processing and analyses reported in the paper.
     * `/experiments`: this folder contains web code to run demos of the experiment itself. 
     * `/python`: this folder contains python code for preprocessing  data and constructing measured variables.
+        * `/quicksand`: this folder contains python code for the three baseline models used to contextualize performance results. 
     * `/R`: this folder contains R code for all results reported in the paper.
 
 * `/data`: contains all behavioral and model data used in our analyses. Data can be created by following the set up scripts.
@@ -149,6 +150,7 @@ Here is an overview of what each analysis file does:
     * `get_data.py`: converts the raw participant data stored using [`jspsych-datapipe`](https://pipe.jspsych.org/) into clean dataframes.
     * `get_methods_info.py`: generates `*.tex` files containing variables used for methods reporting in the manuscript. 
     * `compute_derived_variables.py`: computes the derived variables defined in the [preregistration](https://osf.io/tzha7/?view_only=989096283435445fa1d72d472ceafc9f).
+    * `compute_model_predictions.py`: computes model predictions for the three baseline models used in Figure 3 of the paper.
     * `osf_data_handler.py`: interfaces with the OSF API to pull data from the experiment. 
 * `/R`
     * `cogsci_results.Rmd`: runs all bayesian regressions and generates result figures using the tidy dataframes from the above python scripts.
@@ -157,6 +159,7 @@ For each experiment, the data is separated into three CSV files:
 - `session_data.csv`: contains session-level data, such as participant browser information and demographics.
 - `world_data.csv`: contains block-level data, such as participant exam trial responses and ground truth environment probabilities. 
 - `trial_data.csv`: contains trial-level data (i.e., one row for each experience, counterfactual, or hypothetical navigation trial), such as the path taken to navigate to the goal. 
+- `model_predictions.csv`: contains model predictions (one row for each models' prediction on a navigation trial, or 3 rows for each trial id), such as the predicted path taken to navigate to the goal. 
 
 A detailed description of each column can be found in the preregistration. 
 
