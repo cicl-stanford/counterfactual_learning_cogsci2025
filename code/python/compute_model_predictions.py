@@ -79,6 +79,7 @@ def compute_model_predictions(quicksand_df, world_df):
                 greedy=False
             )
             ideal_path_to_goal = [(tile[1][1], tile[1][0]) for tile in ideal_path_to_goal]
+            ideal_path_to_goal.append((row.goal_position['y'], row.goal_position['x'])) # add goal position
 
             noise_range = 0.001
             prior_grid = np.full(grid.shape, 0.5) + np.random.random(grid.shape) * noise_range * 2 - noise_range
