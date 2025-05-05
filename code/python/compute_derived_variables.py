@@ -73,7 +73,6 @@ def best_path(grid, start, goal, mode='min', walls=None):
 
     return None  # Return None if no path is found
 
-
 def decode_json(json_str):
     """Safely decode JSON strings in a dataframe column."""
     try:
@@ -88,8 +87,10 @@ def decode_json(json_str):
         else:
             return parsed
     except (ValueError, json.JSONDecodeError):
-        return json_str
-
+        try:
+            return ast.literal_eval(json_str)
+        except:
+            return json_str
 
 def process_json_columns(df, json_columns):
     """Decodes JSON columns in the given DataFrame."""
