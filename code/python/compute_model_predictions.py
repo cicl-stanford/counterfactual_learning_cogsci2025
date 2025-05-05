@@ -78,8 +78,7 @@ def compute_model_predictions(quicksand_df, world_df):
                 wall_locations=walls, 
                 greedy=False
             )
-            ideal_path_to_goal = [(tile[1][1], tile[1][0]) for tile in ideal_path_to_goal 
-                                  if (tile[1][1], tile[1][0]) not in [get_coords(row.start_position), get_coords(row.goal_position)]]
+            ideal_path_to_goal = [(tile[1][1], tile[1][0]) for tile in ideal_path_to_goal]
 
             noise_range = 0.001
             prior_grid = np.full(grid.shape, 0.5) + np.random.random(grid.shape) * noise_range * 2 - noise_range
@@ -89,9 +88,9 @@ def compute_model_predictions(quicksand_df, world_df):
             rand_path_to_goal = safe_best_path(prior_grid, get_coords(row.start_position), get_coords(row.goal_position), walls=walls)
             ideal_path_to_goal = [(int(x), int(y)) for x, y in ideal_path_to_goal] if ideal_path_to_goal else None
 
-            best_path_set = set(best_path_to_goal[1:-1]) if best_path_to_goal else None
-            rand_path_set = set(rand_path_to_goal[1:-1]) if rand_path_to_goal else None
-            ideal_path_set = set(ideal_path_to_goal) if ideal_path_to_goal else None
+            best_path_set = set(best_path_to_goal) if best_path_to_goal else None # [1:-1]
+            rand_path_set = set(rand_path_to_goal) if rand_path_to_goal else None # [1:-1]
+            ideal_path_set = set(ideal_path_to_goal) if ideal_path_to_goal else None # [1:-1]
 
             ideal_hazard_count = hazard_count(row, ideal_path_set) if ideal_path_set else None
             best_hazard_count = hazard_count(row, best_path_set) if best_path_set else None

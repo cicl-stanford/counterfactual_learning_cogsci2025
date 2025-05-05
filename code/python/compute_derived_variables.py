@@ -115,13 +115,13 @@ def compute_hazard_count(row, quicksand_df):
     if row.trial_type == 'quicksand-planner':
         return sum(
             row.quicksand_instance_info[tuple(loc)]['prob_quicksand'] == 0.8
-            for loc in row.path_to_goal[1:-1]
+            for loc in row.path_to_goal
         )
     elif row.trial_type == 'quicksand-simulate':
         linked_trial = quicksand_df.loc[quicksand_df.trial_id == row.navigation_trial_id].iloc[0]
         return sum(
             linked_trial.quicksand_instance_info[tuple(loc)]['prob_quicksand'] == 0.8
-            for loc in row.path_to_goal[1:-1]
+            for loc in row.path_to_goal
         )
     else:
         return np.nan
