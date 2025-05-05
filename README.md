@@ -99,7 +99,7 @@ They were asked to make a path from start to goal, avoiding as much quicksand as
 The participants had to plan a full sequence from the start location, without any knowledge of whether a tile was quicksand. 
 They instead learned how frequently a tile was quicksand through repeated interactions in the environment. 
 
-Demos for each experiment are available [here](https://justintheyang.github.io/experiment_demos/action_abstraction/index.html).
+Demos for each experiment are available [here](https://justintheyang.github.io/experiment_demos/counterfactual_learning/index.html).
 
 ### Study 1
 Participants completed 15 *experience* trials in a block. 
