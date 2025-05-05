@@ -100,10 +100,12 @@ if (Sys.info()['user'] == 'justyang') {
 session_df_s1 = read_csv(file.path(data_dir_s1, 'session_data.csv'))
 world_df_s1 = read_csv(file.path(data_dir_s1, 'world_data.csv'))
 quicksand_df_s1 = read_csv(file.path(data_dir_s1, 'trial_data.csv'))
+model_df_s1 = read_csv(file.path(data_dir_s1, 'model_predictions.csv'))
 
 session_df_s2 = read_csv(file.path(data_dir_s2, 'session_data.csv'))
 world_df_s2 = read_csv(file.path(data_dir_s2, 'world_data.csv'))
 quicksand_df_s2 = read_csv(file.path(data_dir_s2, 'trial_data.csv'))
+model_df_s2 = read_csv(file.path(data_dir_s2, 'model_predictions.csv'))
 
 
 bins = 3
@@ -505,68 +507,93 @@ day_split_labels_new <- c("split 1 of 3" = "early",
 
 dodge_width <- position_dodge(width = 0.3)
 
-# Pilot Study: Unsafe Tiles in Path
-fig_s1_hyp1 <- quicksand_df_s1 %>%
-  filter(trial_type == "quicksand-planner") %>%
-  ggplot(aes(x = days_binned, 
-             y = hazard_count, 
-             color = condition, 
-             group = condition)) +
-  stat_summary(fun = mean, 
-               geom = "point", 
-               size = 3,
-               position = dodge_width) +
-  stat_summary(fun.data = mean_cl_boot, 
-               geom = "linerange", 
-               width = 0.2,
-               position = dodge_width) +
-  stat_summary(fun = mean, 
-               geom = "line",
-               position = dodge_width) +
-  scale_color_manual(values = condition_palette,
-                     labels = condition_legend_labels) + 
-  scale_x_discrete(labels = day_split_labels_new) +
-  scale_y_continuous(breaks = seq(4.0, 5.4, 0.2), 
-                     expand = expansion(mult = 0.01)) +
-  coord_cartesian(ylim = c(4.0, 5.4)) +
-  labs(title = "Study 1",
-       x = "Trial order (binned)",
-       y = "Unsafe tiles",
-       color = "Condition") + 
-  guides(color = guide_legend(nrow = 1))
+condition_palette <- c("experience" = "#999999",
+                       "random prior" = "#DBC7BD80",
+                       "experience + counterfactual" = "#e41a1c",
+                       "optimal learner" = "#63453680",
+                       "experience + hypothetical" = "#377eb8",
+                       "oracle" = "#3D2C2280")
 
-# Full Study: Unsafe Tiles in Path
-fig_s2_hyp1 <- quicksand_df_s2 %>%
+condition_legend_labels <- c("experience", 
+                             "random prior",
+                             "+ counterfactual", 
+                             "optimal learner", 
+                             "+ hypothetical", 
+                             "oracle")
+
+model_df_s1_ <- model_df_s1 %>%
+  left_join(quicksand_df_s1 %>% select(trial_id, day, days_binned), by = "trial_id")
+
+model_df_s2_ <- model_df_s2 %>%
+  left_join(quicksand_df_s2 %>% select(trial_id, day, days_binned), by = "trial_id")
+
+
+combined_s1 <- quicksand_df_s1 %>%
+  filter(trial_type == "quicksand-planner") %>%
+  select(condition, day, days_binned, hazard_count) %>%
+  mutate(source = "human")
+
+combined_s1_model <- model_df_s1_ %>%
+  select(condition, day, days_binned, hazard_count) %>%
+  mutate(source = "model")
+
+combined_s1_all <- bind_rows(combined_s1, combined_s1_model)  %>%
+  mutate(condition = factor(condition, levels = c(
+    "experience", 
+    "random prior",
+    "experience + counterfactual", 
+    "optimal learner", 
+    "experience + hypothetical", 
+    "oracle"
+  )))
+
+combined_s2 <- quicksand_df_s2 %>%
   filter(trial_type == "navigation") %>%
-  ggplot(aes(x = days_binned, 
-             y = hazard_count, 
-             color = condition, 
-             group = condition)) +
-  stat_summary(fun = mean, 
-               geom = "point", 
-               size = 3,
-               position = dodge_width) +
-  stat_summary(fun.data = mean_cl_boot, 
-               geom = "linerange", 
-               width = 0.2,
-               position = dodge_width) +
-  stat_summary(fun = mean, 
-               geom = "line",
-               position = dodge_width) +
-  scale_color_manual(values = condition_palette) +
+  select(condition, day, days_binned, hazard_count) %>%
+  mutate(source = "human")
+
+combined_s2_model <- model_df_s2_ %>%
+  select(condition, day, days_binned, hazard_count) %>%
+  mutate(source = "model")
+
+combined_s2_all <- bind_rows(combined_s2, combined_s2_model)  %>%
+  mutate(condition = factor(condition, levels = c(
+    "experience", 
+    "random prior",
+    "experience + counterfactual", 
+    "optimal learner", 
+    "experience + hypothetical", 
+    "oracle"
+  )))
+
+fig_s1_hyp1 <- combined_s1_all %>%
+  ggplot(aes(x = days_binned, y = hazard_count, color = condition, group = condition)) +
+  stat_summary(fun = mean, geom = "point", size = 3, position = dodge_width) +
+  stat_summary(fun.data = mean_cl_boot, geom = "linerange", width = 0.2, position = dodge_width) +
+  stat_summary(fun = mean, geom = "line", position = dodge_width) +
+  scale_color_manual(values = condition_palette, labels = condition_legend_labels) + 
   scale_x_discrete(labels = day_split_labels_new) +
-  scale_y_continuous(breaks = seq(3.8, 4.5, 0.1), 
-                     expand = expansion(mult = 0.01)) +
-  coord_cartesian(ylim = c(3.8, 4.5)) +
-  labs(title = "Study 2",
-       y = " ",
-       x = "Trial order (binned)") +
+  scale_y_continuous(breaks = seq(1.6, 4.0, 0.2), expand = expansion(mult = 0.01)) +
+  coord_cartesian(ylim = c(1.6, 4.0)) +
+  labs(title = "Study 1", x = "Trial order (binned)", y = "Unsafe tiles", color = "Condition") +
+  guides(color = guide_legend(nrow = 2))  # allow 2 rows if legend gets crowded
+
+fig_s2_hyp1 <- combined_s2_all %>%
+  ggplot(aes(x = days_binned, y = hazard_count, color = condition, group = condition)) +
+  stat_summary(fun = mean, geom = "point", size = 3, position = dodge_width) +
+  stat_summary(fun.data = mean_cl_boot, geom = "linerange", width = 0.2, position = dodge_width) +
+  stat_summary(fun = mean, geom = "line", position = dodge_width) +
+  scale_color_manual(values = condition_palette, labels = condition_legend_labels) +
+  scale_x_discrete(labels = day_split_labels_new) +
+  scale_y_continuous(breaks = seq(1.6, 4.0, 0.2), expand = expansion(mult = 0.01)) +
+  coord_cartesian(ylim = c(1.6, 4.0)) +
+  labs(title = "Study 2", y = "", x = "Trial order (binned)") +
   guides(color = "none")
 
-# Combine Plots in One Row
+
 fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 + 
   plot_layout(ncol = 2, guides = "collect") &
-  plot_annotation(tag_levels = "A") & # uses plot.tag
+  plot_annotation(tag_levels = "A") &
   theme(axis.title.x = element_blank(),
         panel.grid.major.y = element_line(),
         legend.position = "bottom",
@@ -575,8 +602,41 @@ fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 +
 ggsave(file.path(figures_dir, 'hypothesis1.pdf'), width = 7, height = 4, useDingbats = FALSE)
 
 fig_combined
+```
+
+```{r}
+fig_s1_hyp1 <- combined_s1_all %>%
+  ggplot(aes(x = day, y = hazard_count, color = condition)) +
+  geom_point(alpha = 0.3, position = dodge_width) +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = TRUE) +
+  scale_color_manual(values = condition_palette, labels = condition_legend_labels) + 
+  scale_y_continuous(breaks = seq(1.0, 8.4, 0.2), expand = expansion(mult = 0.01)) +
+  coord_cartesian(ylim = c(1.0, 5.4)) +
+  labs(title = "Study 1", x = "Trial (day)", y = "Unsafe tiles", color = "Condition") +
+  guides(color = guide_legend(nrow = 2))
+
+fig_s2_hyp1 <- combined_s2_all %>%
+  ggplot(aes(x = day, y = hazard_count, color = condition)) +
+  geom_point(alpha = 0.3, position = dodge_width) +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = TRUE) +
+  scale_color_manual(values = condition_palette, labels = condition_legend_labels) +
+  scale_y_continuous(breaks = seq(1.4, 4.5, 0.5), expand = expansion(mult = 0.01)) +
+  coord_cartesian(ylim = c(1.4, 4.5)) +
+  labs(title = "Study 2", y = "", x = "Trial (day)") +
+  guides(color = "none")
+
+fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 + 
+  plot_layout(ncol = 2, guides = "collect") &
+  plot_annotation(tag_levels = "A") &
+  theme(axis.title.x = element_blank(),
+        panel.grid.major.y = element_line(),
+        legend.position = "bottom",
+        legend.margin = margin(-10, 0, 0, 0))
+
+fig_combined
 
 ```
+
 
 ## Hypothesis 2: Exam performance
 
