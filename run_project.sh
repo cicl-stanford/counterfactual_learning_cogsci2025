@@ -6,6 +6,9 @@ python ./code/python/get_data.py
 echo "Running compute_derived_variables.py..."
 python ./code/python/compute_derived_variables.py
 
+echo "Running compute_model_predictions.py..."
+python ./code/python/compute_model_predictions.py
+
 echo "Running get_methods_info.py..."
 python ./code/python/get_methods_info.py
 
