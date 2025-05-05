@@ -58,7 +58,7 @@ if (!dir.exists(cache_dir)) {
 }
 
 # Optional: Force brms to refit models
-# options(brms.file_refit = "always")
+options(brms.file_refit = "always")
 
 ```
 
