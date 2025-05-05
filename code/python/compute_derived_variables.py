@@ -115,13 +115,13 @@ def compute_hazard_count(row, quicksand_df):
     if row.trial_type == 'quicksand-planner':
         return sum(
             row.quicksand_instance_info[tuple(loc)]['prob_quicksand'] == 0.8
-            for loc in row.path_to_goal
+            for loc in row.path_to_goal[1:-1]
         )
     elif row.trial_type == 'quicksand-simulate':
         linked_trial = quicksand_df.loc[quicksand_df.trial_id == row.navigation_trial_id].iloc[0]
         return sum(
             linked_trial.quicksand_instance_info[tuple(loc)]['prob_quicksand'] == 0.8
-            for loc in row.path_to_goal
+            for loc in row.path_to_goal[1:-1]
         )
     else:
         return np.nan
@@ -167,7 +167,7 @@ def compute_exam_trial_hazard_count(world_df, quicksand_df):
                 walls=dict_to_coords(nav_trial.wall_positions)
             )
             simulated_num_hazards.append(
-                sum(row.states[(loc[1], loc[0])] == 0.8 for loc in exam_best_path)
+                sum(row.states[(loc[1], loc[0])] == 0.8 for loc in exam_best_path[1:-1])
             )
 
         hazard_counts.append(np.mean(simulated_num_hazards))
