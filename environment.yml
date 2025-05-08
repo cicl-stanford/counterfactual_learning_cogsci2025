@@ -11,5 +11,6 @@ dependencies:
   - seaborn
   - tqdm
   - scipy
+  - joblib
   # - ipykernel
   # - jupyter
