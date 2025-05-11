@@ -553,9 +553,10 @@ def parse_instance(instance):
     grid = np.zeros((max([coord[1] for coord in coords]) + 1, max([coord[0] for coord in coords]) + 1))
     walls = []
     for coord, value in instance.items():
-        if value['tile_type'] == 'normal':
-            grid[coord[1], coord[0]] = value['prob_quicksand']
-        elif value['tile_type'] == 'wall':
+        # if value['tile_type'] == 'normal':
+        grid[coord[1], coord[0]] = value['prob_quicksand']
+        # elif
+        if value['tile_type'] == 'wall':
             walls.append((coord[1], coord[0]))
     return grid, walls
 

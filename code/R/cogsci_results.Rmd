@@ -508,34 +508,24 @@ fig_combined_manipulation
 ## Hypothesis 1: Navigation performance
 
 ```{r}
-quicksand_df_s1 %>%
-  filter(world_id == '2139-5c7ee136-9214-458c-85c0-388bc9cb44da')
-
-model_df_s1 %>% 
-  left_join(quicksand_df_s1 %>% select(trial_id, world_id, day), by = "trial_id") %>%
-  filter(world_id == '2139-5c7ee136-9214-458c-85c0-388bc9cb44da')
-```
-
-
-```{r}
 day_split_labels_new <- c("split 1 of 3" = "early", 
                           "split 2 of 3" = "middle", 
                           "split 3 of 3" = "late")
 
 dodge_width <- position_dodge(width = 0.3)
 
-condition_palette <- c("experience" = "#999999",
+condition_palette_ <- c("experience" = "#999999",
                        "random prior" = "#DBC7BD80",
                        "experience + counterfactual" = "#e41a1c",
-                       "optimal learner" = "#63453680",
+                       "optimal learner" = "#74513F80",
                        "experience + hypothetical" = "#377eb8",
-                       "oracle" = "#3D2C2280")
+                       "oracle" = "#2D201980")
 
-condition_legend_labels <- c("experience", 
+condition_legend_labels_ <- c("experience-only", 
                              "random prior",
-                             "+ counterfactual", 
-                             "optimal learner", 
-                             "+ hypothetical", 
+                             "exp + counterfactual",
+                             "optimal learner",
+                             "exp + hypothetical",
                              "oracle")
 
 model_df_s1_ <- model_df_s1 %>%
@@ -588,7 +578,7 @@ fig_s1_hyp1 <- combined_s1_all %>%
   stat_summary(fun = mean, geom = "point", size = 3, position = dodge_width) +
   stat_summary(fun.data = mean_cl_boot, geom = "linerange", width = 0.2, position = dodge_width) +
   stat_summary(fun = mean, geom = "line", position = dodge_width) +
-  scale_color_manual(values = condition_palette, labels = condition_legend_labels) + 
+  scale_color_manual(values = condition_palette_, labels = condition_legend_labels_) + 
   scale_x_discrete(labels = day_split_labels_new) +
   scale_y_continuous(breaks = seq(3.0, 5.5, 0.4), expand = expansion(mult = 0.01)) +
   coord_cartesian(ylim = c(3.0, 5.5)) +
@@ -600,7 +590,7 @@ fig_s2_hyp1 <- combined_s2_all %>%
   stat_summary(fun = mean, geom = "point", size = 3, position = dodge_width) +
   stat_summary(fun.data = mean_cl_boot, geom = "linerange", width = 0.2, position = dodge_width) +
   stat_summary(fun = mean, geom = "line", position = dodge_width) +
-  scale_color_manual(values = condition_palette, labels = condition_legend_labels) +
+  scale_color_manual(values = condition_palette_, labels = condition_legend_labels_) +
   scale_x_discrete(labels = day_split_labels_new) +
   scale_y_continuous(breaks = seq(2.0, 4.8, 0.4), expand = expansion(mult = 0.01)) +
   coord_cartesian(ylim = c(2.0, 4.8)) +
@@ -623,41 +613,69 @@ fig_combined
 
 ```{r}
 fig_s1_hyp1 <- combined_s1_all %>%
-  ggplot(aes(x = day, y = hazard_count, color = condition)) +
-  geom_point(alpha = 0.3, position = dodge_width) +
-  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = TRUE) +
-  scale_color_manual(values = condition_palette, labels = condition_legend_labels) + 
-  scale_y_continuous(breaks = seq(2.8, 6.4, 0.2), expand = expansion(mult = 0.01)) +
-  coord_cartesian(ylim = c(2.8, 6.4)) +
-  labs(title = "Study 1", x = "Trial (day)", y = "Unsafe tiles", color = "Condition") +
-  guides(color = guide_legend(nrow = 2))
+  ggplot(aes(x = day, 
+             y = hazard_count, 
+             color = condition,
+             fill = condition)) +
+  geom_smooth(method = "gam", 
+              formula = y ~ s(x, bs = "cs"), 
+              se = TRUE) +
+  scale_color_manual(values = condition_palette_, 
+                     labels = condition_legend_labels_) + 
+  scale_y_continuous(breaks = seq(2.0, 5.5, 0.5), 
+                     expand = expansion(mult = 0.01)) +
+  scale_fill_manual(values = condition_palette_) +
+  coord_cartesian(ylim = c(2.0, 5.5), xlim = c(0.0, 15.0)) +
+  labs(title = "Study 1", 
+       x = "Trial index", 
+       y = "Unsafe tiles", 
+       color = "Condition",
+       fill = "Condition") +
+  guides(
+    color = guide_legend(nrow = 2, override.aes = list(fill = condition_palette_)),
+    fill = "none"
+  )
 
 fig_s2_hyp1 <- combined_s2_all %>%
-  ggplot(aes(x = day, y = hazard_count, color = condition)) +
-  geom_point(alpha = 0.3, position = dodge_width) +
-  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), se = TRUE) +
-  scale_color_manual(values = condition_palette, labels = condition_legend_labels) +
-  scale_y_continuous(breaks = seq(2.0, 6.0, 0.5), expand = expansion(mult = 0.01)) +
-  coord_cartesian(ylim = c(2.0, 6.0)) +
-  labs(title = "Study 2", y = "", x = "Trial (day)") +
-  guides(color = "none")
+  ggplot(aes(x = day, 
+             y = hazard_count, 
+             color = condition,
+             fill = condition)) +
+  geom_smooth(method = "gam", 
+              formula = y ~ s(x, bs = "cs"), 
+              se = TRUE) +
+  scale_color_manual(values = condition_palette_, 
+                     labels = condition_legend_labels_) +
+  scale_y_continuous(breaks = seq(2.0, 5.5, 0.5), 
+                     expand = expansion(mult = 0.01)) +
+  scale_fill_manual(values = condition_palette_) +
+  coord_cartesian(ylim = c(2.0, 5.5), xlim = c(0.0, 15.0)) +
+  labs(title = "Study 2", 
+       y = "", 
+       x = "Trial index") +
+  guides(color = "none", 
+         fill="none")
 
 fig_combined <- fig_s1_hyp1 + fig_s2_hyp1 + 
   plot_layout(ncol = 2, guides = "collect") &
   plot_annotation(tag_levels = "A") &
-  theme(axis.title.x = element_blank(),
-        panel.grid.major.y = element_line(),
+  theme(panel.grid.major.y = element_line(),
         legend.position = "bottom",
-        legend.margin = margin(-10, 0, 0, 0))
+        legend.margin = margin(-10, 0, 0, 0),
+        axis.title.x = element_text(size = 12),)
+
+ggsave(file.path(figures_dir, 'hypothesis1.pdf'), width = 7, height = 4, useDingbats = FALSE)
 
 fig_combined
-
 ```
 
 
 ## Hypothesis 2: Exam performance
 
 ```{r fig.width = 7, fig.height = 3}
+condition_legend_labels_s2 <- c("experience" = "experience-only", 
+                                "experience + counterfactual" = "exp + counterfactual")
+
 # Exam Correct Tiles
 fig_exam_correct <- world_df_s2 %>%
   ggplot(aes(x = condition, 
@@ -676,7 +694,7 @@ fig_exam_correct <- world_df_s2 %>%
              position = position_jitter(height = 0.2, width = 0.2),
              show.legend = FALSE) + 
   scale_fill_manual(values = condition_palette,
-                    labels = condition_legend_labels) +
+                    labels = condition_legend_labels_s2) +
   scale_x_discrete(labels = condition_labels) +
   scale_y_continuous(breaks = seq(0, 27, 5),
                      limits = c(0, 25),
@@ -705,7 +723,7 @@ fig_exam_hazard <- world_df_s2 %>%
              position = position_jitter(height = 0, width = 0.2),
              show.legend = FALSE) + 
   scale_fill_manual(values = condition_palette,
-                    labels = condition_legend_labels) +
+                    labels = condition_legend_labels_s2) +
   scale_x_discrete(labels = condition_labels) +
   scale_y_continuous(breaks = seq(0, 8, 1), 
                      expand = expansion(mult = 0.01)) +

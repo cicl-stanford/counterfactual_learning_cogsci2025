@@ -23,7 +23,7 @@ class Environment:
         planner = planner_class(world_model, **planner_params)
         self.agent = self.agent_class(world_model, planner, **agent_params)
 
-    def run_episode(self, start_location, goal_location, simulation_type='observation', wall_locations=None, greedy=True):
+    def run_episode(self, start_location, goal_location, simulation_type='observation', wall_locations=None, greedy=True, update_model=True):
         if simulation_type != 'observation':
             last_trajectory = {s : i['stalled'] for _,s,_,_,_,i in self.trajectories[-1]} if simulation_type == 'counterfactual' else None
             simulated_world_model = self.agent.generate_simulated_world_model(self.world_generator.environment_spec, counterfactual=last_trajectory)
@@ -41,7 +41,8 @@ class Environment:
             action = self.agent.planner.choose_action(state, target_policy=greedy)
             next_state, reward, timestep, episode_finished, info = world.transition(state, action)
             if state != start_location: # start location is never quicksand, but that shouldn't reflect learning
-                self.agent.update_model(state, info['stalled'], simulation_type=simulation_type)
+                if update_model:
+                    self.agent.update_model(state, info['stalled'], simulation_type=simulation_type)
             else:
                 self.agent.visited_states.add(start_location)
             trajectory.append((timestep, state, action, reward, next_state, info))
