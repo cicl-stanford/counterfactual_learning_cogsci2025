@@ -30,13 +30,7 @@ Presented at the 47th Annual Meeting of the Cognitive Science Society (2025; San
 
 ## Overview
 
-Our ability to plan and make effective decisions depends on an accurate mental model of the environment. 
-While learning is often thought to depend on external observations, people can also improve their understanding by reasoning about past experiences. 
-In this work, we examine whether counterfactual simulation enhances learning in environments where planning is straightforward but encoding new information is challenging. 
-Across two studies, participants navigated gridworlds, learning to avoid hazardous tiles. Some participants engaged in counterfactual simulation, constructing alternative plans after observing navigation outcomes. Others learned purely from experience. 
-While counterfactual paths contained fewer hazards than initial ones, we found reliable evidence across both studies that counterfactual simulation conferred no measurable advantage in either navigation performance or explicit environment learning. 
-These findings shed new light on the scope of learning by thinking—suggesting that the mechanism by which counterfactual reasoning enhances learning might not be by encouraging deeper encoding of past experiences. 
-
+Our ability to plan and make effective decisions depends on an accurate mental model of the environment. While learning generally requires novel external observations, people can also improve their understanding by reasoning about past experiences. In this work, we examine whether counterfactual simulation enhances learning in environments where planning is straightforward but encoding new information is challenging. Across two studies, participants navigated gridworlds, learning to avoid hazardous tiles. Some participants were asked to engage in counterfactual simulation, constructing alternative plans after observing navigation outcomes. Others learned purely from experience. While counterfactual paths contained fewer hazards than actual paths, we found reliable evidence across both studies that counterfactual simulation conferred no measurable advantage in either navigation performance or explicit environment learning. These findings shed new light on the scope of learning by thinking – suggesting that the mechanism by which counterfactual reasoning enhances learning might not be by encouraging deeper encoding of past experiences.
 
 ## Experiment pre-registration & demo
 
