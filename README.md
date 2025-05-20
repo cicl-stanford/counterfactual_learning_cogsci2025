@@ -1,4 +1,4 @@
-# Learning to Plan from Observed and Counterfactual Experiences
+# Learning to Plan from Actual and Counterfactual Experiences
 
 **Justin Yang, Tobias Gerstenberg**
 
@@ -8,7 +8,7 @@ Presented at the 47th Annual Meeting of the Cognitive Science Society (2025; San
 
 ```
 @inproceedings{yang2025counterfactuallearning,
-  title = {Learning to Plan from Observed and Counterfactual Experiences},
+  title = {Learning to Plan from Actual and Counterfactual Experiences},
   booktitle = {Proceedings of the 47th {Annual} {Conference} of the {Cognitive} {Science} {Society}},
   author = {Yang, Justin and Gerstenberg, Tobias},
   year = {2025},
